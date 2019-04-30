@@ -1,0 +1,43 @@
+<!-- Load the handtrackjs model. -->
+<script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script>
+
+<!-- Replace this with your image. Make sure CORS settings allow reading the image! -->
+<img id="img7" src="7.jpg"/> 
+<canvas id="canvas" class="border"></canvas>
+
+<!-- Place your code in the script tag below. You can also use an external .js file -->
+<script>
+  // Notice there is no 'import' statement. 'handTrack' and 'tf' is
+  // available on the index-page because of the script tag above.
+
+  const img7 = document.getElementById('img7'); 
+  const canvas = document.getElementById('canvas');
+  const context = canvas.getContext('2d');
+
+
+const modelParams = {
+  flipHorizontal: true,   // flip e.g for video 
+  imageScaleFactor: 0.7,  // reduce input image size for gains in speed.
+  maxNumBoxes: 20,        // maximum number of boxes to detect
+  iouThreshold: 0.5,      // ioU threshold for non-max suppression
+  scoreThreshold: 0.02,    // confidence threshold for predictions.
+}
+  
+
+
+  // Load the model.
+  handTrack.load(modelParams).then(model => {
+    // detect objects in the image.
+    model.detect(img7).then(predictions => {
+      //console.log('Predictions: ', predictions[0].bbox[0]   )
+      document.write(predictions[0].bbox[0]+"_"+predictions[0].bbox[1]+"_"+predictions[0].bbox[2]+"_"+predictions[0].bbox[3]+"_"+img7.src+"</br>"   );
+      var bugout = new debugout();
+      bugout.log(predictions);
+
+    });
+  });
+</script>
+
+
+
+

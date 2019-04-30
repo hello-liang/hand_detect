@@ -1,0 +1,1 @@
+mogrify -resize 438x438  frame_11.jpg

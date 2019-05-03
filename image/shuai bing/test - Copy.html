@@ -41,12 +41,11 @@
 			// detect objects in the image.
 			model.detect(value).then(predictions => {		
 				bugout.log("predictions for " + value.src.replace(/^.*[\\\/]/, ''));
-				bugout.log(predictions);
-				model.renderPredictions(predictions, canvas, context, value)
-				
-				<!-- bugout.downloadLog();				 -->
-			})
-			
+				bugout.log(predictions);	
+				bugout.downloadLog();				
+			}).then(value => {
+				bugout.log(value);
+			});
 		});
 		
 	});

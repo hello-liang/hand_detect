@@ -40,13 +40,12 @@
 
 			// detect objects in the image.
 			model.detect(value).then(predictions => {		
-				bugout.log("predictions for " + value.src.replace(/^.*[\\\/]/, ''));
-				bugout.log(predictions);
-				model.renderPredictions(predictions, canvas, context, value)
-				
-				<!-- bugout.downloadLog();				 -->
-			})
-			
+				//bugout.log(predictions[0].bbox[0]+"_"+predictions[0].bbox[1]+"_"+predictions[0].bbox[2]+"_"+predictions[0].bbox[3]+"_"+value.src.replace(/^.*[\\\/]/, ''));	
+			    document.write(predictions[0].bbox[0]+"_"+predictions[0].bbox[1]+"_"+predictions[0].bbox[2]+"_"+predictions[0].bbox[3]+"_"+img7.src+"</br>"   );
+				//bugout.downloadLog();				
+			}).then(value => {
+				//bugout.log(value);
+			});
 		});
 		
 	});
